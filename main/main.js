@@ -1,39 +1,33 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
-const { exec } = require('child_process');
-const path = require('path');
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
 
-function createWindow() {
+const createWindow = () => {
   const win = new BrowserWindow({
     width: 1280,
     height: 720,
+    title: "我的第一个Electron应用",  // 设置应用的标题
+    autoHideMenuBar: true, // 自动隐藏菜单栏
     webPreferences: {
-      preload: path.join(__dirname, 'renderer.js'),
-      contextIsolation: false,
-      nodeIntegration: true
+      preload: path.join(__dirname, 'preload.js')  // 确保 preload.js 路径正确
     }
-  });
+  })
 
-  win.loadFile('index.html');
+  // 修改加载页面的路径，指向 renderer 文件夹下的 index.html
+  win.loadFile(path.join(__dirname, '../renderer/index.html'))
+  //win.loadURL('http://www.baidu.com') // 加载页面
+
+  // 移除菜单栏
+  //win.removeMenu()
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow()
 
-ipcMain.on('run-python', (event) => {
-  exec('python app.py', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`执行出错: ${error}`);
-      event.reply('python-result', `Error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.error(`stderr: ${stderr}`);
-      event.reply('python-result', `Error: ${stderr}`);
-      return;
-    }
-    event.reply('python-result', stdout);
-  });
-});
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+})
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
-});
+  if (process.platform !== 'darwin') app.quit()
+})

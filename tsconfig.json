@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext", // 修复 import.meta 错误
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "react-jsx", // 修复 JSX 错误
+    "esModuleInterop": true, // 修复默认导入错误
+    "skipLibCheck": true,
+    "types": [
+      "vite/client", // 修复 ImportMeta.env 错误
+      "@types/react",
+      "@types/react-dom"
+    ]
+  },
+  "include": ["src", "electron", "vite.config.ts"],
+  "exclude": ["node_modules"]
+}

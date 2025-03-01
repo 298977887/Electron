@@ -1,34 +1,60 @@
-/* Reset some default styles */
+/* 重置样式 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+body, html {
+    height: 100%;
     font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f4f4f9;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+/* 左侧导航栏样式 */
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
     padding: 20px;
 }
 
-header {
-    text-align: center;
+.sidebar h2 {
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
-header h1 {
-    font-size: 24px;
-    color: #333;
+.sidebar ul {
+    list-style: none;
 }
 
-header p {
-    color: #666;
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.sidebar button:hover {
+    background-color: #555;
+}
+
+/* 右侧内容区域样式 */
+.content {
+    flex: 1;
+    padding: 20px;
 }
 
 .banner img {
@@ -38,59 +64,10 @@ header p {
     margin-bottom: 20px;
 }
 
-.file-folders, .announcements, .launch, footer {
-    margin-bottom: 20px;
+.page {
+    display: none;
 }
 
-.file-folders h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.folder button {
-    background-color: #e6e6e6;
-    color: #333;
-    border: none;
-    padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.folder button:hover {
-    background-color: #d4d4d4;
-}
-
-.announcements h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.announcements p {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-}
-
-.launch button {
+.page.active {
     display: block;
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    background-color: #0078d4;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.launch button:hover {
-    background-color: #005ea0;
-}
-
-footer p {
-    font-size: 12px;
-    color: #777;
-    text-align: center;
-    margin-bottom: 5px;
 }

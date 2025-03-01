@@ -3,26 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>绘世 - 启动器</title>
+    <title>我的第一个Electron应用</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <h1>ComfyUI 绘世 - 启动器</h1>
-            <p>让 AI 与你一同创作，让画笔随心所欲！</p>
-        </header>
+    <div class="app">
+        <!-- 左侧侧边栏导航 -->
+        <nav class="sidebar">
+            <h2>导航菜单</h2>
+            <ul>
+                <li><button onclick="showPage('home')">首页</button></li>
+                <li><button onclick="showPage('settings')">设置</button></li>
+                <li><button onclick="showPage('about')">关于</button></li>
+            </ul>
+        </nav>
 
+        <!-- 右侧内容区域 -->
+        <div class="content">
+            <!-- 横幅图片区域 -->
+            <section class="banner">
+                <img src="../assets/images/banner.jpg" alt="Banner Image">
+            </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>启动器版本：2.8.10 Build 389</p>
-            <p>描述文件版本：2024-11-08 17:00</p>
-            <p>ComfyUI 版本：6966729</p>
-        </footer>
+            <!-- 动态内容区域 -->
+            <section id="home" class="page active">
+                <h2>欢迎来到首页</h2>
+                <p>这是您的第一个 Electron 应用。</p>
+            </section>
+            <section id="settings" class="page">
+                <h2>设置</h2>
+                <p>这里是设置页面内容。</p>
+            </section>
+            <section id="about" class="page">
+                <h2>关于</h2>
+                <p>这是关于页面，显示应用的相关信息。</p>
+            </section>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="renderer.js"></script>
 </body>
 </html>
